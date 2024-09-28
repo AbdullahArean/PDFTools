@@ -1,6 +1,6 @@
 # PDF Tools
 
-This repository contains Python scripts for modifying PDFs, including adjusting contrast and brightness and compressing PDFs by reducing image quality and DPI.
+This repository contains Python scripts for modifying PDFs, including adjusting contrast and brightness, compressing PDFs, and splitting PDFs based on page ranges.
 
 ## Table of Contents
 1. [PDF Contrast and Brightness Adjuster](#pdf-contrast-and-brightness-adjuster)
@@ -13,6 +13,11 @@ This repository contains Python scripts for modifying PDFs, including adjusting 
    - [Requirements](#requirements-1)
    - [Usage](#usage-1)
    - [Example](#example-1)
+3. [PDF Splitter](#pdf-splitter)
+   - [Features](#features-2)
+   - [Requirements](#requirements-2)
+   - [Usage](#usage-2)
+   - [Example](#example-2)
 
 ---
 
@@ -134,6 +139,55 @@ python pdf_compressor.py -i document.pdf -o compressed_document.pdf -q 50 --dpi 
 ```
 
 This command compresses the input `document.pdf` by reducing image quality to 50% and setting the DPI to 72, and saves the compressed PDF as `compressed_document.pdf`.
+
+---
+
+## PDF Splitter
+
+The `pdf_splitter.py` script allows you to split a PDF into smaller PDFs based on specified page ranges.
+
+### Features
+- Split a PDF by specifying individual pages and page ranges.
+- Output a new PDF containing only the specified pages.
+
+### Requirements
+
+You will need the following Python package:
+
+- `PyPDF2`
+
+You can install it using pip:
+
+```bash
+pip install pypdf2
+```
+
+### Usage
+
+To run the script, use the following format:
+
+```bash
+python pdf_splitter.py -i <input_file> -o <output_file> <ranges>
+```
+
+### Example Command
+
+```bash
+python pdf_splitter.py -i input.pdf -o output.pdf "2-3,5-7"
+```
+
+#### Parameters:
+- `-i <input_file>`: The input PDF file.
+- `-o <output_file>`: The output PDF file with the extracted pages.
+- `<ranges>`: A comma-separated list of page ranges (e.g., `1-2,4,6-8`).
+
+### Example
+
+```bash
+python pdf_splitter.py -i document.pdf -o split_document.pdf "1-3,5,7-9"
+```
+
+This command will extract pages 1, 2, 3, 5, 7, 8, and 9 from `document.pdf` and save them as `split_document.pdf`.
 
 ---
 
